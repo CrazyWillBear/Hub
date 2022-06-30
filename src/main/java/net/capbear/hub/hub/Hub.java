@@ -21,6 +21,7 @@ public final class Hub extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
+        event.setJoinMessage("");
         Player player = event.getPlayer();
 
         TextComponent survival = new TextComponent("§3- §oSurvival"/*replace this with what you want the text to say*/);

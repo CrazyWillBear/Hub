@@ -29,7 +29,7 @@ public final class Hub extends JavaPlugin implements Listener {
             p.hidePlayer(player);
         }
 
-        Location loc = new Location(getServer().getWorld("world_the_end"), 0, 1, 0, 0, 0);
+        Location loc = new Location(getServer().getWorld("world_the_end"), 0.5, 1, 0.5, 0, 0);
         player.teleport(loc);
 
         TextComponent survival = new TextComponent("§3- §oSurvival"/*replace this with what you want the text to say*/);

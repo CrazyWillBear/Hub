@@ -1,0 +1,6 @@
+name: Hub
+version: '${project.version}'
+main: net.capbear.hub.hub.Hub
+api-version: 1.19
+authors: [ CapBear ]
+description: Go between BungeeCord servers

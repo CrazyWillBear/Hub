@@ -33,7 +33,7 @@ public final class Hub extends JavaPlugin implements Listener {
         creative.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/server creative"));
 
         // add each message below
-        player.sendMessage("§3§lSelect a server to join!");
+        player.sendMessage("§3§lSelect a server to join by clicking on it in chat!");
         player.sendMessage(survival);
         player.sendMessage(creative);
     }

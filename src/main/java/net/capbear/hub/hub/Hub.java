@@ -1,6 +1,7 @@
 package net.capbear.hub.hub;
 
 import net.md_5.bungee.api.chat.*;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,10 +24,13 @@ public final class Hub extends JavaPlugin implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         event.setJoinMessage("");
         Player player = event.getPlayer();
-        for(Player p : getServer().getOnlinePlayers()) {
+        for (Player p : getServer().getOnlinePlayers()) {
             player.hidePlayer(p);
             p.hidePlayer(player);
         }
+
+        Location loc = new Location(getServer().getWorld("THE_END"), 0, 1, 0, 0, 0);
+        player.teleport(loc);
 
         TextComponent survival = new TextComponent("§3- §oSurvival"/*replace this with what you want the text to say*/);
         survival.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Join Survival server!"/*replace this with what you want the text to say when its hovered on*/).create()));

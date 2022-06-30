@@ -23,7 +23,10 @@ public final class Hub extends JavaPlugin implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         event.setJoinMessage("");
         Player player = event.getPlayer();
-        player.hidePlayer(player);
+        for(Player p : getServer().getOnlinePlayers()) {
+            player.hidePlayer(p);
+            p.hidePlayer(player);
+        }
 
         TextComponent survival = new TextComponent("§3- §oSurvival"/*replace this with what you want the text to say*/);
         survival.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Join Survival server!"/*replace this with what you want the text to say when its hovered on*/).create()));

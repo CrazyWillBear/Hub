@@ -39,15 +39,15 @@ public final class Hub extends JavaPlugin implements Listener {
 
         TextComponent survival = new TextComponent("§3- §oSurvival"/*replace this with what you want the text to say*/);
         survival.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Join Survival server!"/*replace this with what you want the text to say when its hovered on*/).create()));
-        survival.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/server survival"/*replace this with the command the player will run after clicking it*/));
+        survival.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/survival"/*replace this with the command the player will run after clicking it*/));
 
         // copy above and replace parameters as needed
         TextComponent creative = new TextComponent("§3- §oCreative");
         creative.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Join Creative server!").create()));
-        creative.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/server creative"));
+        creative.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/creative"));
 
         // add each message below
-        player.sendMessage("§3§lSelect a server to join by clicking on it in chat, or by running '/server (creative / survival)'!");
+        player.sendMessage("§3§lSelect a server to join by clicking on it in chat, or by running '/creative` or  `/survival'!");
         player.sendMessage(survival);
         player.sendMessage(creative);
     }

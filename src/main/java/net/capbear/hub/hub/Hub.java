@@ -1,11 +1,14 @@
 package net.capbear.hub.hub;
 
 import net.md_5.bungee.api.chat.*;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -32,6 +35,7 @@ public final class Hub extends JavaPlugin implements Listener {
 
         Location loc = new Location(getServer().getWorld("world_the_end"), 0.5, 1, 0.5, 0, 0);
         player.teleport(loc);
+        player.setGameMode(GameMode.SPECTATOR);
 
         TextComponent survival = new TextComponent("§3- §oSurvival"/*replace this with what you want the text to say*/);
         survival.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Join Survival server!"/*replace this with what you want the text to say when its hovered on*/).create()));
@@ -43,7 +47,7 @@ public final class Hub extends JavaPlugin implements Listener {
         creative.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/server creative"));
 
         // add each message below
-        player.sendMessage("§3§lSelect a server to join by clicking on it in chat!");
+        player.sendMessage("§3§lSelect a server to join by clicking on it in chat, or by running '/server (creative / survival)'!");
         player.sendMessage(survival);
         player.sendMessage(creative);
     }
@@ -52,6 +56,12 @@ public final class Hub extends JavaPlugin implements Listener {
     public void onPlayerQuit(PlayerQuitEvent event) {
         event.setQuitMessage("");
     }
+
+    @EventHandler
+    public void onPlayerChat(PlayerChatEvent event) { event.setCancelled(true); }
+
+    @EventHandler
+    public void onPlayerMove(PlayerMoveEvent event) { event.setCancelled(true); }
 
     @Override
     public void onDisable() {

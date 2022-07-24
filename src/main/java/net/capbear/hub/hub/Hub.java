@@ -1,8 +1,6 @@
 package net.capbear.hub.hub;
 
-import net.md_5.bungee.api.chat.*;
-import org.bukkit.GameMode;
-import org.bukkit.Location;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -26,6 +24,9 @@ public final class Hub extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
+        event.getPlayer().setGameMode(GameMode.SPECTATOR);
+        Location loc = new Location(Bukkit.getWorld("world_the_end"), 0, 0, 0);
+        event.getPlayer().teleport(loc);
         event.setJoinMessage("");
         Player player = event.getPlayer();
         for (Player p : getServer().getOnlinePlayers()) {

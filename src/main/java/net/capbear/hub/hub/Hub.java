@@ -6,7 +6,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -24,9 +23,7 @@ public final class Hub extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        event.getPlayer().setGameMode(GameMode.SPECTATOR);
-        Location loc = new Location(Bukkit.getWorld("world_the_end"), 0, 0, 0);
-        event.getPlayer().teleport(loc);
+        event.getPlayer().setGameMode(GameMode.ADVENTURE);
         event.setJoinMessage("");
         Player player = event.getPlayer();
         for (Player p : getServer().getOnlinePlayers()) {
@@ -42,9 +39,6 @@ public final class Hub extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onPlayerChat(PlayerChatEvent event) { event.setCancelled(true); }
-
-    @EventHandler
-    public void onPlayerMove(PlayerMoveEvent event) { event.setCancelled(true); }
 
     @Override
     public void onDisable() {
